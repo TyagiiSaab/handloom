@@ -7,7 +7,11 @@ import { EXPORT_EMAIL, LEAD_MODE, withBase } from "@/lib/site";
 import { Reveal, SectionHeading } from "./ui";
 
 const inputCls =
-  "w-full border border-navy-900/15 bg-transparent px-4 py-3 text-sm placeholder:text-navy-900/40 focus:border-gold-400 focus:outline-none dark:border-ivory-50/15 dark:placeholder:text-ivory-100/40";
+  "w-full border border-navy-900/15 bg-transparent px-4 py-3 text-sm placeholder:text-navy-900/40 focus:border-gold-400 focus:outline-none dark:border-ivory-50/25 dark:placeholder:text-ivory-100/50";
+
+/* Inputs inside always-dark sections (e.g. catalog gate on navy). */
+const inputDark =
+  "w-full border border-ivory-50/25 bg-white/5 px-4 py-3 text-sm text-ivory-50 placeholder:text-ivory-100/50 focus:border-gold-400 focus:outline-none";
 
 function useLeadForm() {
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
@@ -95,27 +99,27 @@ export function CatalogDownload({ locale }: { locale: Locale }) {
             <form onSubmit={submit} aria-label="Catalog request form" className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="cd-name" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-ivory-100/70">Full name *</label>
-                <input id="cd-name" name="name" required autoComplete="name" placeholder="Ava Sharma" className={`${inputCls} border-ivory-50/20 text-ivory-50`} />
+                <input id="cd-name" name="name" required autoComplete="name" placeholder="Ava Sharma" className={inputDark} />
               </div>
               <div>
                 <label htmlFor="cd-company" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-ivory-100/70">Company *</label>
-                <input id="cd-company" name="company" required autoComplete="organization" placeholder="Nordic Home Ltd" className={`${inputCls} border-ivory-50/20 text-ivory-50`} />
+                <input id="cd-company" name="company" required autoComplete="organization" placeholder="Nordic Home Ltd" className={inputDark} />
               </div>
               <div>
                 <label htmlFor="cd-email" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-ivory-100/70">Business email *</label>
-                <input id="cd-email" name="email" type="email" required autoComplete="email" placeholder="buyer@company.com" className={`${inputCls} border-ivory-50/20 text-ivory-50`} />
+                <input id="cd-email" name="email" type="email" required autoComplete="email" placeholder="buyer@company.com" className={inputDark} />
               </div>
               <div>
                 <label htmlFor="cd-phone" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-ivory-100/70">Phone</label>
-                <input id="cd-phone" name="phone" type="tel" autoComplete="tel" placeholder="+44 …" className={`${inputCls} border-ivory-50/20 text-ivory-50`} />
+                <input id="cd-phone" name="phone" type="tel" autoComplete="tel" placeholder="+44 …" className={inputDark} />
               </div>
               <div>
                 <label htmlFor="cd-country" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-ivory-100/70">Country *</label>
-                <input id="cd-country" name="country" required autoComplete="country-name" placeholder="United Kingdom" className={`${inputCls} border-ivory-50/20 text-ivory-50`} />
+                <input id="cd-country" name="country" required autoComplete="country-name" placeholder="United Kingdom" className={inputDark} />
               </div>
               <div>
                 <label htmlFor="cd-interest" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-ivory-100/70">Product interest *</label>
-                <select id="cd-interest" name="interest" required className={`${inputCls} border-ivory-50/20 bg-navy-950 text-ivory-50`} defaultValue="Mink Blankets">
+                <select id="cd-interest" name="interest" required className={`${inputDark} bg-navy-950`} defaultValue="Mink Blankets">
                   {["Mink Blankets", "Hand-Tufted Rugs", "Premium Carpets", "Full Range"].map((o) => (
                     <option key={o}>{o}</option>
                   ))}
