@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { t, type Locale } from "@/lib/i18n";
 import { withBase } from "@/lib/site";
+import { ProductImage } from "./ProductImage";
 import { Counter } from "./ui";
 
 export function Hero({ locale }: { locale: Locale }) {
@@ -99,27 +99,23 @@ export function Hero({ locale }: { locale: Locale }) {
             >
               <source src={withBase("/videos/mill.mp4")} type="video/mp4" />
             </video>
-            <div className="relative aspect-[6/7] w-full">
-              <Image
+            <div className="group relative aspect-[6/7] w-full">
+              <ProductImage
                 src="/images/hero-main.jpg"
                 alt="Textile mill floor with weaving lines"
-                fill
+                ratio="aspect-[6/7]"
                 sizes="(max-width: 1024px) 100vw, 480px"
-                priority
-                className="object-cover"
+                eager
               />
             </div>
             {/* floating texture card */}
             <div className="absolute -left-3 top-6 hidden w-36 rotate-[-4deg] overflow-hidden rounded-lg border border-gold-400/60 shadow-xl sm:block">
-              <div className="relative aspect-square w-full">
-                <Image
-                  src="/images/mink-royal.jpg"
-                  alt="Embossed mink blanket texture close-up"
-                  fill
-                  sizes="144px"
-                  className="object-cover"
-                />
-              </div>
+              <ProductImage
+                src="/images/mink-royal.jpg"
+                alt="Embossed mink blanket texture close-up"
+                ratio="aspect-square"
+                sizes="144px"
+              />
               <p className="bg-navy-950/90 px-2 py-1.5 text-center text-[10px] font-semibold uppercase tracking-widest2 text-gold-300">
                 Mink · 420 GSM
               </p>

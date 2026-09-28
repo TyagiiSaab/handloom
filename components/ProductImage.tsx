@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBase } from "@/lib/site";
 
 /** Real photography wrapper — rounded-top media with hover zoom inside `group` cards. */
 export function ProductImage({
@@ -17,7 +18,7 @@ export function ProductImage({
   return (
     <div className={`relative overflow-hidden ${ratio}`}>
       <Image
-        src={src}
+        src={withBase(src)}
         alt={alt}
         fill
         sizes={sizes}
